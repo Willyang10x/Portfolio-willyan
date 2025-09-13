@@ -44,8 +44,9 @@ export function About() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-card-foreground">Educação</h3>
-                    <p className="text-muted-foreground">Técnico em TI - Lourdinas</p>
                     <p className="text-muted-foreground">ADS - UEPB (cursando)</p>
+                    <p className="text-muted-foreground">Técnico em TI - Lourdinas</p>
+                    <p className="text-muted-foreground">ECI - Ensino Médio</p>
                   </div>
                 </div>
               </CardContent>

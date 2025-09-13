@@ -61,6 +61,12 @@ export function Header() {
               Projetos
             </button>
             <button
+              onClick={() => scrollToSection("resume")}
+              className="text-foreground hover:text-primary transition-colors"
+            >
+              Currículo
+            </button>
+            <button
               onClick={() => scrollToSection("contact")}
               className="text-foreground hover:text-primary transition-colors"
             >
@@ -101,6 +107,12 @@ export function Header() {
                 className="text-left text-foreground hover:text-primary transition-colors"
               >
                 Projetos
+              </button>
+              <button
+                onClick={() => scrollToSection("resume")}
+                className="text-left text-foreground hover:text-primary transition-colors"
+              >
+                Currículo
               </button>
               <button
                 onClick={() => scrollToSection("contact")}
