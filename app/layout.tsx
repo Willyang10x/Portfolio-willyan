@@ -20,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}>
+        <link rel="shortcut icon" href="logo-wg-Photoroom.png" type="image/x-icon" />
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
       </body>
