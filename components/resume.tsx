@@ -6,8 +6,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 export function Resume() {
   const handleDownloadResume = () => {
-    console.log("Download do currículo solicitado")
-    alert("file:///C:/Users/Dell/Desktop/Portfolio-willyan/public/Curriculo-willyan.pdf")
+    const link = document.createElement("a")
+    link.href = "/curriculo-willyan.pdf"
+    link.download = "Curriculo-Willyan-Gabriel.pdf"
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
   }
 
   const experiences = [
@@ -15,6 +19,7 @@ export function Resume() {
       title: "Designer Gráfico",
       company: "New Start - Agência de Mídia Digital",
       period: "2022-2025 - Atual",
+      description: "Criação de identidades visuais e materiais gráficos digitais",
     },
   ]
 
@@ -22,22 +27,28 @@ export function Resume() {
     {
       name: "Cardápio Online",
       year: "2023",
-      description: "Sistema completo com back-end em Node.js e front-end em HTML/CSS/JS",
+      description:
+        "Sistema completo com back-end em Node.js e front-end em HTML/CSS/JS, para gerenciamento de cardápio digital",
     },
     {
       name: "To-Do List com React",
       year: "2024",
-      description: "Lista de tarefas desenvolvida com React e TypeScript",
+      description: "Lista de tarefas desenvolvida com React e TypeScript, praticando componentização",
     },
     {
       name: "WG DESIGN – Portfólio Pessoal",
       year: "2024",
-      description: "Site com identidade visual própria e layout responsivo",
+      description: "Site com identidade visual própria e layout responsivo para apresentar trabalhos",
     },
     {
       name: "ColorBot – Gerador de Paleta de Cores",
       year: "2024",
-      description: "Ferramenta visual para criar paletas a partir de uma cor base",
+      description: "Ferramenta visual para criar paletas a partir de uma cor base, voltada para web design",
+    },
+    {
+      name: "Bot de WhatsApp",
+      year: "2024",
+      description: "Automação de respostas e comandos via WhatsApp rodando localmente",
     },
   ]
 
@@ -53,9 +64,9 @@ export function Resume() {
       period: "2023 - 2024",
     },
     {
-      degree: "Ensino médio",
+      degree: "Ensino Médio",
       institution: "ECI Francisco Apolinário da Silva",
-      period: "2021-2024",
+      period: "2021 - 2024",
     },
   ]
 
@@ -88,6 +99,7 @@ export function Resume() {
                   <h3 className="text-white font-semibold">{exp.title}</h3>
                   <p className="text-blue-400 text-sm">{exp.company}</p>
                   <p className="text-gray-400 text-sm">{exp.period}</p>
+                  <p className="text-gray-300 text-sm mt-2">{exp.description}</p>
                 </div>
               ))}
             </CardContent>
@@ -143,14 +155,15 @@ export function Resume() {
             </CardHeader>
             <CardContent>
               <p className="text-gray-300 text-lg leading-relaxed">
-                Designer e Desenvolvedor Front-End com foco em criar soluções digitais modernas, funcionais e centradas
-                na experiência do usuário. Experiência em HTML5, CSS3, JavaScript, Node.js, MySQL e React. Perfil
-                criativo e inovador com facilidade para aprender novas tecnologias.
+                // Atualizando resumo profissional com base no currículo fornecido Aplicar minhas habilidades em design
+                gráfico e desenvolvimento front-end na criação de soluções digitais modernas, funcionais e centradas na
+                experiência do usuário. Busco uma oportunidade para contribuir com criatividade, inovação e tecnologia.
+                Perfil criativo e inovador com facilidade para aprender novas tecnologias.
               </p>
             </CardContent>
           </Card>
         </div>
       </div>
     </section>
-  )
+  )
 }
