@@ -18,7 +18,7 @@ export function Resume() {
     {
       title: "Designer Gráfico",
       company: "New Start - Agência de Mídia Digital",
-      period: "2022-2025 - Atual",
+      period: "2023-2025 - Atual",
       description: "Criação de identidades visuais e materiais gráficos digitais",
     },
   ]
@@ -56,7 +56,7 @@ export function Resume() {
     {
       degree: "Análise e Desenvolvimento de Sistemas",
       institution: "UEPB",
-      period: "2023 - Atual",
+      period: "2025 - Atual",
     },
     {
       degree: "Técnico em Tecnologia da Informação",
