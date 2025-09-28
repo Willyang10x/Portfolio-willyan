@@ -155,7 +155,7 @@ export function Resume() {
             </CardHeader>
             <CardContent>
               <p className="text-gray-300 text-lg leading-relaxed">
-                // Atualizando resumo profissional com base no currículo fornecido Aplicar minhas habilidades em design
+                Aplicar minhas habilidades em design
                 gráfico e desenvolvimento front-end na criação de soluções digitais modernas, funcionais e centradas na
                 experiência do usuário. Busco uma oportunidade para contribuir com criatividade, inovação e tecnologia.
                 Perfil criativo e inovador com facilidade para aprender novas tecnologias.
