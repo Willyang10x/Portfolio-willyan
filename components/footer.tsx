@@ -52,7 +52,7 @@ export function Footer() {
 
         <div className="mt-8 pt-8 border-t border-border text-center">
           <p className="text-muted-foreground flex items-center justify-center gap-2">
-            Feito com <Heart size={16} className="text-red-500" /> por Willyan Gabriel © 2025
+            Feito por <a href="https://github.com/Willyang10x">Willyan Gabriel</a> © 2025
           </p>
         </div>
       </div>
