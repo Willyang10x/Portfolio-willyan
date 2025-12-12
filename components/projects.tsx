@@ -8,20 +8,36 @@ export function Projects() {
     {
       title: "WG-DESIGN",
       description:
-        "Site dedicado ao meu portfólio, desenvolvido em 2 meses usando HTML, CSS e JavaScript puro. Projeto focado em demonstrar habilidades de design e desenvolvimento frontend.",
-      technologies: ["HTML5", "CSS3", "JavaScript"],
+        "Site dedicado ao meu portfólio (este site!), desenvolvido para demonstrar habilidades de design e desenvolvimento frontend moderno com React e Tailwind.",
+      technologies: ["React", "Next.js", "Tailwind CSS", "TypeScript"],
       github: "https://github.com/Willyang10x/WG-DESIGN",
       demo: "https://wg-designer.netlify.app/",
       featured: true,
     },
     {
-      title: "Gerenciador de Tarefas",
+      title: "Physio Track",
       description:
-        "Lista de Tarefas (To-Do List) minimalista desenvolvida em React. Projeto focado em praticar conceitos fundamentais como componentes, estados e hooks.",
-      technologies: ["React", "TypeScript", "CSS"],
-      github: "https://github.com/Willyang10x/Gerenciador-de-tarefas",
-      demo: "https://tasks-in-list.netlify.app/",
+        "Sistema de acompanhamento e gestão para fisioterapia. Permite o cadastro de pacientes, monitoramento de sessões e evolução do tratamento, focado em usabilidade e eficiência.",
+      technologies: ["React", "TypeScript", "Node.js", "Tailwind CSS"], // Tecnologias prováveis; ajuste se necessário
+      github: "https://github.com/Willyang10x/PhysioTrack", // Link ajustado para o padrão do seu GitHub
+      demo: null,
       featured: true,
+    },
+    {
+      title: "ColorBot",
+      description:
+        "Ferramenta visual para designers e desenvolvedores criarem paletas de cores harmônicas a partir de uma cor base.",
+      technologies: ["JavaScript", "CSS3", "HTML5"],
+      github: "https://github.com/Willyang10x/ColorBot",
+      featured: false,
+    },
+    {
+      title: "Bot de WhatsApp",
+      description:
+        "Automação de respostas e comandos para WhatsApp rodando localmente. Facilita o atendimento e interação automatizada.",
+      technologies: ["JavaScript", "Node.js", "Automação"],
+      github: "https://github.com/Willyang10x/Bot-WhatsApp",
+      featured: false,
     },
     {
       title: "Site New Start",
@@ -49,7 +65,7 @@ export function Projects() {
             Meus <span className="text-primary">Projetos</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Alguns dos projetos que desenvolvi para aprimorar minhas habilidades
+            Alguns dos projetos que desenvolvi para aprimorar minhas habilidades em Front-end e Back-end
           </p>
         </div>
 
@@ -59,16 +75,16 @@ export function Projects() {
             {projects
               .filter((project) => project.featured)
               .map((project, index) => (
-                <Card key={index} className="bg-card border-border hover:border-primary/50 transition-colors group">
+                <Card key={index} className="bg-card border-border hover:border-primary/50 transition-colors group flex flex-col">
                   <CardHeader>
-                    <CardTitle className="text-card-foreground group-hover:text-primary transition-colors">
+                    <CardTitle className="text-card-foreground group-hover:text-primary transition-colors text-2xl">
                       {project.title}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-muted-foreground leading-relaxed">{project.description}</p>
+                  <CardContent className="space-y-4 flex-1 flex flex-col">
+                    <p className="text-muted-foreground leading-relaxed flex-1">{project.description}</p>
 
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 mb-4">
                       {project.technologies.map((tech, techIndex) => (
                         <Badge key={techIndex} variant="secondary" className="text-xs">
                           {tech}
@@ -77,14 +93,14 @@ export function Projects() {
                     </div>
 
                     <div className="flex gap-3 pt-2">
-                      <Button variant="outline" size="sm" asChild>
+                      <Button variant="outline" size="sm" asChild className="w-full sm:w-auto">
                         <a href={project.github} target="_blank" rel="noopener noreferrer">
                           <Github size={16} className="mr-2" />
                           Código
                         </a>
                       </Button>
                       {project.demo && (
-                        <Button size="sm" asChild>
+                        <Button size="sm" asChild className="w-full sm:w-auto">
                           <a href={project.demo} target="_blank" rel="noopener noreferrer">
                             <ExternalLink size={16} className="mr-2" />
                             Demo
@@ -98,31 +114,33 @@ export function Projects() {
           </div>
 
           {/* Other Projects */}
-          <div className="mt-8">
-            <h3 className="text-2xl font-semibold mb-6 text-center">Outros Projetos</h3>
-            <div className="grid md:grid-cols-2 gap-6">
+          <div className="mt-12">
+            <h3 className="text-2xl font-semibold mb-8 text-center flex items-center justify-center gap-2">
+              <span className="bg-primary/10 px-4 py-1 rounded-full text-primary text-sm uppercase tracking-wider">Outros Projetos</span>
+            </h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
               {projects
                 .filter((project) => !project.featured)
                 .map((project, index) => (
-                  <Card key={index} className="bg-card border-border hover:border-primary/50 transition-colors">
-                    <CardContent className="p-6">
-                      <div className="flex justify-between items-start mb-3">
-                        <h4 className="text-lg font-semibold text-card-foreground">{project.title}</h4>
+                  <Card key={index} className="bg-card border-border hover:border-primary/50 transition-colors h-full flex flex-col">
+                    <CardContent className="p-6 flex flex-col h-full">
+                      <div className="flex justify-between items-start mb-4">
+                        <h4 className="text-xl font-semibold text-card-foreground">{project.title}</h4>
                         <a
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-muted-foreground hover:text-primary transition-colors"
+                          className="text-muted-foreground hover:text-primary transition-colors p-1"
                         >
-                          <Github size={20} />
+                          <Github size={22} />
                         </a>
                       </div>
 
-                      <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{project.description}</p>
+                      <p className="text-muted-foreground text-sm mb-6 leading-relaxed flex-1">{project.description}</p>
 
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-2 mt-auto">
                         {project.technologies.map((tech, techIndex) => (
-                          <Badge key={techIndex} variant="secondary" className="text-xs">
+                          <Badge key={techIndex} variant="outline" className="text-xs bg-background/50">
                             {tech}
                           </Badge>
                         ))}
@@ -134,11 +152,11 @@ export function Projects() {
           </div>
         </div>
 
-        <div className="text-center mt-12">
-          <Button variant="outline" size="lg" asChild>
-            <a href="https://github.com/Willyang10x" target="_blank" rel="noopener noreferrer">
+        <div className="text-center mt-16">
+          <Button variant="outline" size="lg" asChild className="px-8">
+            <a href="https://github.com/Willyang10x?tab=repositories" target="_blank" rel="noopener noreferrer">
               <Github size={20} className="mr-2" />
-              Ver Mais no GitHub
+              Ver Todos no GitHub
             </a>
           </Button>
         </div>
