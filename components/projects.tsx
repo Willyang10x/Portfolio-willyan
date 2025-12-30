@@ -18,9 +18,9 @@ export function Projects() {
       title: "Physio Track",
       description:
         "Sistema de acompanhamento e gestão para fisioterapia. Permite o cadastro de pacientes, monitoramento de sessões e evolução do tratamento, focado em usabilidade e eficiência.",
-      technologies: ["React", "TypeScript", "Node.js", "Tailwind CSS"], // Tecnologias prováveis; ajuste se necessário
-      github: "https://github.com/Willyang10x/PhysioTrack", // Link ajustado para o padrão do seu GitHub
-      demo: null,
+      technologies: ["React", "TypeScript", "Node.js", "Tailwind CSS"], 
+      github: "https://github.com/Willyang10x/PhysioTrack", 
+      demo: "https://physiotrack-web.vercel.app/",
       featured: true,
     },
     {
