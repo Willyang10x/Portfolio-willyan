@@ -1,162 +1,157 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+"use client"
+
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Github, ExternalLink } from "lucide-react"
+import { Github, ExternalLink, Code2 } from "lucide-react"
+import { motion } from "framer-motion"
 
 export function Projects() {
   const projects = [
     {
-      title: "WG-DESIGN",
-      description:
-        "Site dedicado ao meu portfólio (este site!), desenvolvido para demonstrar habilidades de design e desenvolvimento frontend moderno com React e Tailwind.",
-      technologies: ["React", "Next.js", "Tailwind CSS", "TypeScript"],
+      title: "WG-DESIGN Portfolio",
+      description: "Meu espaço pessoal na web. Design moderno com animações fluidas, Next.js 14 e Tailwind CSS.",
+      tags: ["React", "Next.js", "Framer Motion", "Tailwind"],
       github: "https://github.com/Willyang10x/WG-DESIGN",
       demo: "https://wg-designer.netlify.app/",
       featured: true,
     },
     {
       title: "Physio Track",
-      description:
-        "Sistema de acompanhamento e gestão para fisioterapia. Permite o cadastro de pacientes, monitoramento de sessões e evolução do tratamento, focado em usabilidade e eficiência.",
-      technologies: ["React", "TypeScript", "Node.js", "Tailwind CSS"], 
+      description: "Plataforma completa para gestão de clínicas de fisioterapia. Prontuários, agendamentos e financeiro.",
+      tags: ["TypeScript", "React", "Node.js", "MySQL"], 
       github: "https://github.com/Willyang10x/PhysioTrack", 
       demo: "https://physiotrack-web.vercel.app/",
       featured: true,
     },
     {
       title: "ColorBot",
-      description:
-        "Ferramenta visual para designers e desenvolvedores criarem paletas de cores harmônicas a partir de uma cor base.",
-      technologies: ["JavaScript", "CSS3", "HTML5"],
+      description: "Ferramenta essencial para designers gerarem paletas de cores harmônicas instantaneamente.",
+      tags: ["JavaScript", "Algorithm", "CSS3"],
       github: "https://github.com/Willyang10x/ColorBot",
       featured: false,
     },
     {
-      title: "Bot de WhatsApp",
-      description:
-        "Automação de respostas e comandos para WhatsApp rodando localmente. Facilita o atendimento e interação automatizada.",
-      technologies: ["JavaScript", "Node.js", "Automação"],
+      title: "WhatsApp Bot",
+      description: "Automação inteligente para atendimento ao cliente via WhatsApp rodando localmente.",
+      tags: ["Node.js", "WPPConnect", "Automation"],
       github: "https://github.com/Willyang10x/Bot-WhatsApp",
       featured: false,
     },
     {
-      title: "Site New Start",
-      description:
-        "Website desenvolvido para uma agência de mídia digital, focado na divulgação de trabalhos e serviços oferecidos pela empresa.",
-      technologies: ["HTML5", "CSS3", "JavaScript"],
+      title: "New Start Agência",
+      description: "Landing page institucional de alta conversão para agência de marketing digital.",
+      tags: ["HTML5", "Sass", "JavaScript"],
       github: "https://github.com/Willyang10x/Site-New-Start",
       featured: false,
     },
     {
-      title: "Projeto Final Tecinfo",
-      description:
-        "Projeto final do curso técnico, demonstrando conhecimentos adquiridos em desenvolvimento web e boas práticas de programação.",
-      technologies: ["JavaScript", "HTML5", "CSS3"],
+      title: "TecInfo Final",
+      description: "Sistema acadêmico desenvolvido como projeto de conclusão de curso técnico.",
+      tags: ["Fullstack", "js", "MySQL"],
       github: "https://github.com/Willyang10x/Projeto-Final-Tecinfo",
       featured: false,
     },
   ]
 
   return (
-    <section id="projects" className="py-20 px-4">
+    <section id="projects" className="py-24 px-4">
       <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Meus <span className="text-primary">Projetos</span>
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Projetos <span className="text-primary text-glow">Em Destaque</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Alguns dos projetos que desenvolvi para aprimorar minhas habilidades em Front-end e Back-end
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Uma seleção de trabalhos que demonstram minha paixão por resolver problemas.
           </p>
+        </motion.div>
+
+        {/* Featured Projects Grid */}
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
+          {projects.filter(p => p.featured).map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <Card className="flex flex-col h-full bg-white/5 border-white/10 backdrop-blur-md overflow-hidden group hover:border-primary/50 transition-all duration-300 hover:shadow-[0_0_40px_rgba(var(--primary-rgb),0.15)]">
+                <CardHeader>
+                  <CardTitle className="flex justify-between items-start">
+                    <span className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                      {project.title}
+                    </span>
+                    <Code2 className="text-muted-foreground group-hover:text-primary transition-colors" />
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="flex-1 space-y-4">
+                  <p className="text-muted-foreground leading-relaxed">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag, i) => (
+                      <Badge key={i} variant="outline" className="bg-primary/5 border-primary/20 text-primary/80">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+                <CardFooter className="gap-4 pt-4">
+                  <Button variant="outline" className="flex-1 bg-transparent border-white/20 hover:bg-white/10 hover:text-white group-hover:border-primary/50" asChild>
+                    <a href={project.github} target="_blank"><Github size={18} className="mr-2"/> Código</a>
+                  </Button>
+                  {project.demo && (
+                    <Button className="flex-1 bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20" asChild>
+                      <a href={project.demo} target="_blank"><ExternalLink size={18} className="mr-2"/> Demo</a>
+                    </Button>
+                  )}
+                </CardFooter>
+              </Card>
+            </motion.div>
+          ))}
         </div>
 
-        <div className="grid gap-8">
-          {/* Featured Projects */}
-          <div className="grid md:grid-cols-2 gap-8">
-            {projects
-              .filter((project) => project.featured)
-              .map((project, index) => (
-                <Card key={index} className="bg-card border-border hover:border-primary/50 transition-colors group flex flex-col">
-                  <CardHeader>
-                    <CardTitle className="text-card-foreground group-hover:text-primary transition-colors text-2xl">
-                      {project.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4 flex-1 flex flex-col">
-                    <p className="text-muted-foreground leading-relaxed flex-1">{project.description}</p>
-
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies.map((tech, techIndex) => (
-                        <Badge key={techIndex} variant="secondary" className="text-xs">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-
-                    <div className="flex gap-3 pt-2">
-                      <Button variant="outline" size="sm" asChild className="w-full sm:w-auto">
-                        <a href={project.github} target="_blank" rel="noopener noreferrer">
-                          <Github size={16} className="mr-2" />
-                          Código
-                        </a>
-                      </Button>
-                      {project.demo && (
-                        <Button size="sm" asChild className="w-full sm:w-auto">
-                          <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink size={16} className="mr-2" />
-                            Demo
-                          </a>
-                        </Button>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-          </div>
-
-          {/* Other Projects */}
-          <div className="mt-12">
-            <h3 className="text-2xl font-semibold mb-8 text-center flex items-center justify-center gap-2">
-              <span className="bg-primary/10 px-4 py-1 rounded-full text-primary text-sm uppercase tracking-wider">Outros Projetos</span>
-            </h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
-              {projects
-                .filter((project) => !project.featured)
-                .map((project, index) => (
-                  <Card key={index} className="bg-card border-border hover:border-primary/50 transition-colors h-full flex flex-col">
-                    <CardContent className="p-6 flex flex-col h-full">
-                      <div className="flex justify-between items-start mb-4">
-                        <h4 className="text-xl font-semibold text-card-foreground">{project.title}</h4>
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-muted-foreground hover:text-primary transition-colors p-1"
-                        >
-                          <Github size={22} />
-                        </a>
-                      </div>
-
-                      <p className="text-muted-foreground text-sm mb-6 leading-relaxed flex-1">{project.description}</p>
-
-                      <div className="flex flex-wrap gap-2 mt-auto">
-                        {project.technologies.map((tech, techIndex) => (
-                          <Badge key={techIndex} variant="outline" className="text-xs bg-background/50">
-                            {tech}
-                          </Badge>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-            </div>
-          </div>
+        {/* Other Projects Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {projects.filter(p => !p.featured).map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 + (index * 0.1) }}
+            >
+              <Card className="h-full bg-white/5 border-white/10 hover:bg-white/10 transition-colors flex flex-col justify-between p-4">
+                <div>
+                  <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-primary" />
+                    {project.title}
+                  </h4>
+                  <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
+                    {project.description}
+                  </p>
+                </div>
+                <div className="flex justify-between items-center mt-auto pt-4 border-t border-white/5">
+                  <div className="text-xs text-muted-foreground">{project.tags[0]}</div>
+                  <a href={project.github} target="_blank" className="text-muted-foreground hover:text-primary transition-colors">
+                    <Github size={18} />
+                  </a>
+                </div>
+              </Card>
+            </motion.div>
+          ))}
         </div>
 
         <div className="text-center mt-16">
-          <Button variant="outline" size="lg" asChild className="px-8">
-            <a href="https://github.com/Willyang10x?tab=repositories" target="_blank" rel="noopener noreferrer">
-              <Github size={20} className="mr-2" />
-              Ver Todos no GitHub
+          <Button variant="link" className="text-muted-foreground hover:text-primary text-lg" asChild>
+            <a href="https://github.com/Willyang10x?tab=repositories" target="_blank">
+              Ver repositório completo no GitHub &rarr;
             </a>
           </Button>
         </div>
