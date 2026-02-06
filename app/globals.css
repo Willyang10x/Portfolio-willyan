@@ -4,67 +4,41 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated color tokens for black background portfolio theme */
-  --background: oklch(0 0 0); /* Pure black background */
-  --foreground: oklch(0.985 0 0); /* White text */
-  --card: oklch(0.15 0 0); /* Dark gray cards */
-  --card-foreground: oklch(0.985 0 0); /* White text on cards */
-  --popover: oklch(0.2 0 0); /* Slightly lighter gray for popovers */
-  --popover-foreground: oklch(0.985 0 0); /* White text on popovers */
-  --primary: oklch(0.6 0.2 264); /* Blue accent color */
-  --primary-foreground: oklch(0.985 0 0); /* White text on primary */
-  --secondary: oklch(0.25 0 0); /* Medium gray for secondary elements */
-  --secondary-foreground: oklch(0.985 0 0); /* White text on secondary */
-  --muted: oklch(0.3 0 0); /* Muted gray */
-  --muted-foreground: oklch(0.7 0 0); /* Light gray for muted text */
-  --accent: oklch(0.6 0.2 264); /* Blue accent */
-  --accent-foreground: oklch(0.985 0 0); /* White text on accent */
-  --destructive: oklch(0.577 0.245 27.325); /* Red for destructive actions */
-  --destructive-foreground: oklch(0.985 0 0); /* White text on destructive */
-  --border: oklch(0.25 0 0); /* Gray borders */
-  --input: oklch(0.15 0 0); /* Dark input backgrounds */
-  --ring: oklch(0.6 0.2 264); /* Blue focus rings */
-  --chart-1: oklch(0.6 0.2 264); /* Blue for charts */
-  --chart-2: oklch(0.7 0.15 85); /* Yellow for secondary charts */
-  --chart-3: oklch(0.65 0.15 160); /* Green for additional charts */
-  --chart-4: oklch(0.6 0.2 25); /* Red for alert charts */
-  --chart-5: oklch(0.65 0.2 220); /* Light blue for contrast charts */
-  --radius: 0.5rem;
-  --sidebar: oklch(0.15 0 0); /* Dark sidebar */
-  --sidebar-foreground: oklch(0.985 0 0); /* White sidebar text */
-  --sidebar-primary: oklch(0.6 0.2 264); /* Blue primary sidebar */
-  --sidebar-primary-foreground: oklch(0.985 0 0); /* White text */
-  --sidebar-accent: oklch(0.25 0 0); /* Gray sidebar accent */
-  --sidebar-accent-foreground: oklch(0.985 0 0); /* White accent text */
-  --sidebar-border: oklch(0.25 0 0); /* Gray sidebar borders */
-  --sidebar-ring: oklch(0.6 0.2 264); /* Blue sidebar focus rings */
-}
-
-.dark {
+  /* Fundo PRETO ABSOLUTO para o tema espacial */
   --background: oklch(0 0 0);
   --foreground: oklch(0.985 0 0);
-  --card: oklch(0.15 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.2 0 0);
-  --popover-foreground: oklch(0.985 0 0);
+
+  /* Roxo Vibrante para o tema Neon */
   --primary: oklch(0.6 0.2 264);
   --primary-foreground: oklch(0.985 0 0);
+  
+  --card: oklch(0.1 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.1 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  
   --secondary: oklch(0.25 0 0);
   --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.3 0 0);
+  --muted: oklch(0.2 0 0);
   --muted-foreground: oklch(0.7 0 0);
   --accent: oklch(0.6 0.2 264);
   --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
+  
+  --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.25 0 0);
-  --input: oklch(0.15 0 0);
+  --border: oklch(0.2 0 0);
+  --input: oklch(0.2 0 0);
   --ring: oklch(0.6 0.2 264);
+  --radius: 0.5rem;
+  
+  /* Cores Charts */
   --chart-1: oklch(0.6 0.2 264);
   --chart-2: oklch(0.7 0.15 85);
   --chart-3: oklch(0.65 0.15 160);
   --chart-4: oklch(0.6 0.2 25);
   --chart-5: oklch(0.65 0.2 220);
+  
+  /* Sidebar */
   --sidebar: oklch(0.15 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.6 0.2 264);
@@ -73,6 +47,12 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.25 0 0);
   --sidebar-ring: oklch(0.6 0.2 264);
+}
+
+.dark {
+  --background: oklch(0 0 0);
+  --foreground: oklch(0.985 0 0);
+  /* (As outras variáveis dark seguem o padrão root acima) */
 }
 
 @theme inline {
@@ -97,23 +77,10 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 @layer base {
@@ -121,6 +88,45 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    background-color: black;
+  }
+}
+
+/* --- UTILITÁRIOS PERSONALIZADOS (NEON & GLASS) --- */
+@layer utilities {
+  /* Animação de Texto Gradiente */
+  @keyframes gradient-xy {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .animate-gradient-x {
+    background: linear-gradient(
+      to right, 
+      #2600ff, 
+      #3b82f6, 
+      #0099ff,
+      #2600ff
+    );
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: gradient-xy 3s linear infinite;
+  }
+
+  /* Brilho Neon (Glow) */
+  .text-glow {
+    text-shadow: 0 0 20px rgba(0, 60, 255, 0.6);
+  }
+  
+  /* Vidro Fosco (Glassmorphism) */
+  .glass-card {
+    @apply bg-white/5 border border-white/10 backdrop-blur-md;
+  }
+  
+  .glass-card:hover {
+    @apply bg-white/10 border-primary/30 shadow-[0_0_30px_rgba(124,58,237,0.15)];
   }
 }
