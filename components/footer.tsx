@@ -1,60 +1,41 @@
-import { Github, Linkedin, Instagram, ExternalLink, Heart } from "lucide-react"
+import { Github, Linkedin, Instagram, ExternalLink } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="py-12 px-4 border-t border-border">
-      <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-center md:text-left">
-            <div className="text-2xl font-bold text-primary mb-2">WG</div>
-            <p className="text-muted-foreground">Desenvolvedor Front-End apaixonado por tecnologia</p>
-          </div>
-
-          <div className="flex space-x-6">
-            <a
-              href="https://github.com/Willyang10x"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-              aria-label="GitHub"
-            >
-              <Github size={24} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/willyan-gabriel-70b53b344"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin size={24} />
-            </a>
-            <a
-              href="https://www.instagram.com/willdsg07/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-              aria-label="Instagram"
-            >
-              <Instagram size={24} />
-            </a>
-            <a
-              href="https://wg-designer.netlify.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-              aria-label="Portfólio Anterior"
-            >
-              <ExternalLink size={24} />
-            </a>
-          </div>
-        </div>
-
-        <div className="mt-8 pt-8 border-t border-border text-center">
-          <p className="text-muted-foreground flex items-center justify-center gap-2">
-            Feito por <a href="https://github.com/Willyang10x">Willyan Gabriel</a> © 2025
+    <footer className="relative py-12 px-4 bg-black overflow-hidden">
+      {/* Linha Gradient no topo */}
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+      
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+        <div className="text-center md:text-left">
+          <h3 className="text-2xl font-bold text-white mb-2">WG</h3>
+          <p className="text-muted-foreground text-sm max-w-xs">
+            Construindo interfaces digitais com paixão, código limpo e design centrado no usuário.
           </p>
         </div>
+
+        <div className="flex gap-6">
+          {[
+            { icon: Github, href: "https://github.com/Willyang10x" },
+            { icon: Linkedin, href: "https://www.linkedin.com/in/willyan-gabriel-70b53b344" },
+            { icon: Instagram, href: "https://www.instagram.com/willdsg07/" },
+            { icon: ExternalLink, href: "https://wg-designer.netlify.app/" }
+          ].map((social, i) => (
+            <a
+              key={i}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 bg-white/5 rounded-full hover:bg-primary hover:text-white hover:-translate-y-1 transition-all duration-300 text-muted-foreground"
+            >
+              <social.icon size={20} />
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div className="container mx-auto mt-12 pt-8 border-t border-white/5 text-center text-sm text-gray-500">
+        <p>© 2026 Willyan Gabriel. Todos os direitos reservados.</p>
       </div>
     </footer>
   )
