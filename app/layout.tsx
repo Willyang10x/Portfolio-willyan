@@ -9,7 +9,10 @@ import "./globals.css"
 export const metadata: Metadata = {
   title: "Willyan Gabriel - Desenvolvedor Front-End",
   description:
-    "Portfólio de Willyan Gabriel, estudante de Análise e Desenvolvimento de Sistemas especializado em React, TypeScript e JavaScript."
+    "Portfólio de Willyan Gabriel, estudante de Análise e Desenvolvimento de Sistemas especializado em React, TypeScript e JavaScript.",
+  icons: {
+    icon: "/icon.svg", // Aponta para o novo SVG que criamos
+  },
 }
 
 export default function RootLayout({
@@ -19,8 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}>
-        <link rel="shortcut icon" href="logo-wg-Photoroom.png" type="image/x-icon" />
+      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased bg-black text-white`}>
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
       </body>
