@@ -121,11 +121,28 @@
     text-shadow: 0 0 20px rgba(0, 60, 255, 0.6);
   }
   
-  /* Vidro Fosco (Glassmorphism) */
+  /* Vidro Fosco (Glassmorphism) - Padrão PC */
   .glass-card {
     @apply bg-white/5 border border-white/10 backdrop-blur-md;
   }
+
+  /* --- OTIMIZAÇÃO MOBILE (Adicionado) --- */
+  /* Remove o blur pesado apenas em telas menores que 768px */
+  @media (max-width: 768px) {
+    .glass-card {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      background-color: rgba(20, 20, 20, 0.95); /* Fundo sólido escuro */
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+    
+    /* Remove sombra pesada de texto no mobile para performance */
+    .text-glow {
+      text-shadow: none !important;
+    }
+  }
   
+  /* Hover mantém o efeito (no PC ou mobile se clicar) */
   .glass-card:hover {
     @apply bg-white/10 border-primary/30 shadow-[0_0_30px_rgba(124,58,237,0.15)];
   }
