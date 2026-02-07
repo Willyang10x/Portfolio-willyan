@@ -14,47 +14,48 @@ export function SpaceBackground() {
 
     let animationFrameId: number
     let stars: { x: number; y: number; radius: number; alpha: number; speed: number }[] = []
-
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-      initStars()
-    }
+    let prevWidth = window.innerWidth // Para rastrear mudança de largura
 
     const initStars = () => {
-      // Ajuste o divisor (4000) para ter mais ou menos estrelas
-      const starCount = Math.floor((canvas.width * canvas.height) / 4000)
+      const width = window.innerWidth
+      const height = window.innerHeight
+      
+      canvas.width = width
+      canvas.height = height
+
+      const isMobile = width < 768
+      const densityDivisor = isMobile ? 12000 : 4000 // Menos estrelas no mobile
+      const starCount = Math.floor((width * height) / densityDivisor)
+      
       stars = []
       for (let i = 0; i < starCount; i++) {
         stars.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          radius: Math.random() * 1.2, // Estrelas pequenas e delicadas
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * (isMobile ? 1.2 : 1.5),
           alpha: Math.random(),
-          speed: Math.random() * 0.15 + 0.02, // Velocidade lenta e suave
+          speed: Math.random() * (isMobile ? 0.1 : 0.2) + 0.05,
         })
       }
     }
 
     const drawStars = () => {
-      // Limpa o canvas mantendo a transparência (o fundo preto vem do CSS global)
+      // Usa clearRect em vez de re-pintar fundo para performance
       ctx.clearRect(0, 0, canvas.width, canvas.height)
-
+      
       stars.forEach((star) => {
         ctx.beginPath()
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2)
         ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`
         ctx.fill()
 
-        // Movimento suave para cima
         star.y -= star.speed
-
-        // Efeito de cintilação (Twinkle)
-        if (Math.random() > 0.995) {
+        
+        // Cintilação simplificada
+        if (Math.random() > 0.99) {
           star.alpha = Math.random()
         }
 
-        // Resetar estrela quando sair da tela
         if (star.y < 0) {
           star.y = canvas.height
           star.x = Math.random() * canvas.width
@@ -64,13 +65,22 @@ export function SpaceBackground() {
       animationFrameId = requestAnimationFrame(drawStars)
     }
 
-    resizeCanvas()
+    const handleResize = () => {
+      // TRUQUE: Só recria as estrelas se a LARGURA mudar.
+      // Ignora a mudança de altura causada pela barra de endereço do celular.
+      if (window.innerWidth !== prevWidth) {
+        prevWidth = window.innerWidth
+        initStars()
+      }
+    }
+
+    initStars()
     drawStars()
 
-    window.addEventListener("resize", resizeCanvas)
+    window.addEventListener("resize", handleResize)
 
     return () => {
-      window.removeEventListener("resize", resizeCanvas)
+      window.removeEventListener("resize", handleResize)
       cancelAnimationFrame(animationFrameId)
     }
   }, [])
@@ -78,8 +88,7 @@ export function SpaceBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1]"
-      style={{ background: "transparent" }} // O fundo preto real será o do body
+      className="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 bg-black"
     />
   )
 }
