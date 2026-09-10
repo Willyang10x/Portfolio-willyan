@@ -30,9 +30,10 @@ export function Hero() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
   }
 
+  // CORREÇÃO AQUI: Adicionado 'as const' para o TypeScript parar de chorar
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.8, ease: "easeOut" } }
+    visible: { opacity: 1, transition: { duration: 0.8, ease: "easeOut" as const } }
   }
 
   return (
