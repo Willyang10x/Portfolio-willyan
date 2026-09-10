@@ -1,5 +1,6 @@
 # Willyan Gabriel — Portfólio & Perfil Profissional
-<img width="1365" height="677" alt="image" src="https://github.com/user-attachments/assets/5d1c3823-138d-40f4-9136-5caf1e646584" />
+<img width="1785" height="912" alt="image" src="https://github.com/user-attachments/assets/076fdbfa-4dc7-44ea-889b-d2ee51002202" />
+
 
 
 
